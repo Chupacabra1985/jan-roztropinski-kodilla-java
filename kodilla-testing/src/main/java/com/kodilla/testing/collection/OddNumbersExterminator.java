@@ -14,10 +14,13 @@ public class OddNumbersExterminator {
             Integer nextNumber = numbers.get(n);
             if(nextNumber % 2 == 0){
                 newList.add(nextNumber);
-            }else{
-                null;
             }
         }
+
+
     }
 
+    public ArrayList<Integer> getNewList() {
+        return newList;
+    }
 }
