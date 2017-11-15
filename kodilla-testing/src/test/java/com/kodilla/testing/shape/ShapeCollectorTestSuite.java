@@ -8,22 +8,23 @@ import org.junit.Test;
 public class ShapeCollectorTestSuite {
 
     @Before
-    public void before(){
-        System.out.println("Starting test.")
+    public void before() {
+        System.out.println("Starting test.");
     }
 
     @After
-    public void after(){
-        System.out.println("End test.")
+    public void after() {
+        System.out.println("End test.");
     }
 
     @Test
-    public void testAddFigure(){
+    public void testAddFigure() {
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape circle = new Circle();
+        ShapeCollector shapeCollector = new ShapeCollector(circle);
 
         //When
-        shapeCollector.addFigure("Circle");
+        shapeCollector.addFigure(circle);
 
         //Then
         Assert.assertEquals(1, shapeCollector.getListShapeQuantity());
@@ -31,36 +32,36 @@ public class ShapeCollectorTestSuite {
     }
 
     @Test
-    public void testRemoveFigure(){
+    public void testRemoveFigure() {
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure("Circle");
-        int beforeListSize = shapeCollector.getListShapeQuantity();
+        Shape circle = new Circle();
+        ShapeCollector shapeCollector = new ShapeCollector(circle);
+        shapeCollector.addFigure(circle);
+
 
         //When
-        shapeCollector.removeFigure("Circle");
-        int afterListSize = shapeCollector.getListShapeQuantity();
+        boolean result = shapeCollector.removeFigure(circle);
+
 
         //Then
-        Assert.assertNotEquals(beforeListSize,afterListSize);
+        Assert.assertTrue(result);
+        Assert.assertEquals(0,shapeCollector.getListShapeQuantity());
     }
 
     @Test
     public void testGetFigure(){
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure("Circle");
+        Shape circle = new Circle();
+        ShapeCollector shapeCollector = new ShapeCollector(circle);
+        shapeCollector.addFigure(circle);
 
         //When
         Shape retrievedFigure;
         retrievedFigure = shapeCollector.getFigure(0);
 
         //Then
-
+        Assert.assertEquals(circle, retrievedFigure);
 
     }
-
-
-
 
 }

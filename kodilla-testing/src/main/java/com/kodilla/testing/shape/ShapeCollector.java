@@ -16,12 +16,12 @@ public class ShapeCollector {
 
     }
 
-    public void removeFigure(Shape shape){
-
+    public boolean removeFigure(Shape shape){
+        return false;
     }
 
     public Shape getFigure(int n){
-        return 0;
+        return null;
 
     }
 
