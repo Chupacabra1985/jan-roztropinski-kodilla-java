@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeCollector {
-    private Shape shape;
+
     private List<Shape> listShape = new ArrayList<Shape>();
 
-    public ShapeCollector(Shape shape){
-        this.shape = shape;
+    public ShapeCollector(){
+        listShape = new ArrayList<Shape>();
     }
 
 
