@@ -85,4 +85,32 @@ public class BookDirectoryTestSuite {
 
     }
 
+    @Test
+    public void testlistBooksInHandsOf(){
+        //Given
+        LibraryUser libraryUser1 = new LibraryUser("John", "Kowalski", "123456789");
+        LibraryUser libraryUser2 = new LibraryUser("Paul", "Smith", "789456123");
+        LibraryUser libraryUser3 = new LibraryUser("Natasha", "Wolkowa", "741852963");
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> resultListOf0Books = new ArrayList<Book>();
+        List<Book> resultListOf1Book = generateListOfNBooks(1);
+        List<Book> resultListOf5Books = generateListOfNBooks(5);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1)).thenReturn(resultListOf0Books);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser2)).thenReturn(resultListOf1Book);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser3)).thenReturn(resultListOf5Books);
+
+        //When
+        List<Book>theListOfBooks0 = bookLibrary.listBooksInHandsOf(libraryUser1);
+        List<Book>theListOfBooks1 = bookLibrary.listBooksInHandsOf(libraryUser2);
+        List<Book>theListOfBooks5 = bookLibrary.listBooksInHandsOf(libraryUser3);
+
+        //Then
+        assertEquals(0,theListOfBooks0.size());
+        assertEquals(1,theListOfBooks1.size());
+        assertEquals(5,theListOfBooks5.size());
+
+
+    }
+
 }
