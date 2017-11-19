@@ -31,7 +31,13 @@ public class ForumStatistics {
         return getCommentsCountQuantity(statistics)/getPostsCountQuantity(statistics);
     }
 
-
-
+    public void calculateAdvStatistics(Statistics statistics){
+        this.getUsersQuantity(statistics);
+        this.getPostsCountQuantity(statistics);
+        this.getCommentsCountQuantity(statistics);
+        this.averagePostsToUser(statistics);
+        this.averageCommentsToUser(statistics);
+        this.averageCommentsToPost(statistics);
+    }
 
 }
