@@ -32,11 +32,11 @@ public class ForumStatisticsTest {
 
         //When
         double commentsToPost = forumCalculator.averageCommentsToPost();
-        int usersQuantity = forumCalculator.getUsersQuantity();
+        double usersQuantity = forumCalculator.getUsersQuantity();
 
         //Then
         Assert.assertEquals(1.0, commentsToPost,0.01);
-        Assert.assertEquals(0,usersQuantity);
+        Assert.assertEquals(0,usersQuantity,0.1);
 
     }
 
@@ -100,7 +100,7 @@ public class ForumStatisticsTest {
         double postsToUser = forumCalculator.averagePostsToUser();
 
         //Then
-        Assert.assertEquals(0.2, commentsToPost,0.2);
+        Assert.assertEquals(0.2, commentsToPost,0.1);
         Assert.assertEquals(1.0, commentsToUser,0.1);
         Assert.assertEquals(5.0, postsToUser,0.1);
 
@@ -117,12 +117,12 @@ public class ForumStatisticsTest {
         ForumCalculator forumCalculator = new ForumCalculator(statisticsMock);
 
         //When
-        int comments= forumCalculator.getCommentsCountQuantity();
+        double comments= forumCalculator.getCommentsCountQuantity();
         double commentsToUser = forumCalculator.averageCommentsToUser();
         double postsToUser = forumCalculator.averagePostsToUser();
 
         //Then
-        Assert.assertEquals(0, comments);
+        Assert.assertEquals(0, comments,0.1);
         Assert.assertEquals(0, commentsToUser,0.1);
         Assert.assertEquals(1.0, postsToUser,0.1);
 
@@ -161,12 +161,12 @@ public class ForumStatisticsTest {
         ForumCalculator forumCalculator = new ForumCalculator(statisticsMock);
 
         //When
-        int  post = forumCalculator.getPostsCountQuantity();
+        double  post = forumCalculator.getPostsCountQuantity();
         double commentsToUser = forumCalculator.averageCommentsToUser();
         double postsToUser = forumCalculator.averagePostsToUser();
 
         //Then
-        Assert.assertEquals(0, post);
+        Assert.assertEquals(0, post,0.1);
         Assert.assertEquals(1.0, commentsToUser,0.1);
         Assert.assertEquals(0.0, postsToUser,0.1);
 

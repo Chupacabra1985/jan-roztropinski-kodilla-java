@@ -2,9 +2,9 @@ package com.kodilla.testing.forum.statistics;
 
 public class ForumCalculator {
     Statistics statistics;
-    int usersQuantity;
-    int postsCountQuantity;
-    int commentsCountQuantity;
+    double usersQuantity;
+    double postsCountQuantity;
+    double commentsCountQuantity;
     double commentsToUser;
     double postsToUser;
     double commentsToPost;
@@ -14,24 +14,24 @@ public class ForumCalculator {
         this.statistics = statistics;
     }
 
-    public int getUsersQuantity(){
-        return statistics.usersNames().size();
+    public double getUsersQuantity(){
+        return statistics.usersNames().size()*1.0;
     }
 
-    public int getPostsCountQuantity(){
-        return statistics.postsCount();
+    public double getPostsCountQuantity(){
+        return statistics.postsCount()*1.0;
     }
 
-    public int getCommentsCountQuantity(){
-        return statistics.commentsCount();
+    public double getCommentsCountQuantity(){
+        return statistics.commentsCount()*1.0;
     }
 
     public double averagePostsToUser(){
-        return getPostsCountQuantity()/getUsersQuantity();
+        return (getPostsCountQuantity()/getUsersQuantity());
     }
 
     public double averageCommentsToUser(){
-        return getCommentsCountQuantity()/getUsersQuantity();
+        return (getCommentsCountQuantity()/getUsersQuantity());
     }
 
     public double averageCommentsToPost(){
