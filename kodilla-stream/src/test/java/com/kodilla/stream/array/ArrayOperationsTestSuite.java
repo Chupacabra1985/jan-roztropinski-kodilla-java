@@ -1,11 +1,7 @@
 package com.kodilla.stream.array;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.stream.IntStream;
-
-
 
 public class ArrayOperationsTestSuite{
     @Test
@@ -19,12 +15,10 @@ public class ArrayOperationsTestSuite{
 
 
         //When
+        double average = ArrayOperations.getAverege(numbers);
+
         IntStream.rangeClosed(numbers[0],numbers[19])
                 .forEach(System.out::println);
-
-        double average = IntStream.rangeClosed(numbers[0],numbers[19])
-                .average()
-                .getAsDouble();
 
 
         //Then
