@@ -4,13 +4,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.util.concurrent.TimeUnit.DAYS;
+import static java.time.temporal.ChronoUnit.*;
 import static java.util.stream.Collectors.toList;
+import static java.util.concurrent.TimeUnit.DAYS;
+
 
     public class BoardTestSuite {
         public Board prepareTestData() {
@@ -152,11 +153,12 @@ import static java.util.stream.Collectors.toList;
         //When
         List<TaskList> timeTask = new ArrayList<>();
         timeTask.add(new TaskList("In progress"));
-        long averageTimeTask = project.getTaskLists().stream()
+        double averageTimeTask = project.getTaskLists().stream()
                 .filter(timeTask::contains)
                 .flatMap(tl->tl.getTasks().stream())
-                .map(t-> ChronoUnit.DAYS.between(t.getDeadline(),t.getCreated()))
-                .count();
+                .mapToDouble(a-> ChronoUnit.DAYS.between(a.getCreated(), LocalDate.now()))
+                .average()
+                .getAsDouble();
 
         System.out.println(averageTimeTask);
 
