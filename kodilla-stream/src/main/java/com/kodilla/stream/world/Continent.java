@@ -1,37 +1,39 @@
 package com.kodilla.stream.world;
-
 import java.util.HashSet;
 import java.util.Set;
 
 public final class Continent {
-    private final Set<Country> setCountry = new HashSet<>();
+    private final Country country;
     private final String addCountry;
+    private final Set<Continent> setContinent = new HashSet<>();
 
-    public Continent(final String addCountry) {
+
+    public Continent(final Country country,final String addCountry) {
+        this.country = country;
         this.addCountry = addCountry;
     }
 
-    public void addCountry(Country country){
-        setCountry.add(country);
+    public void addCountry(Continent continent) {
+        setContinent.add(continent);
     }
 
-    public boolean removeSetCountry(Country country){
-        return setCountry.remove(country);
+    public boolean removeSetContinent(Continent continent) {
+        return setContinent.remove(continent);
     }
 
-    public Set<Country> getSetCountry(){
-        return new HashSet<>(setCountry);
-    }
-
-    public String getAddCountry(){
+    public String getAddCountry() {
         return addCountry;
+    }
+
+    public Set<Continent> getSetContinent() {
+        return setContinent;
     }
 
     @Override
     public String toString() {
         return "Continent{" +
-                "setCountry=" + setCountry +
-                ", addCountry='" + addCountry + '\'' +
+                "addCountry='" + addCountry + '\'' +
+                ", setContinent=" + setContinent +
                 '}';
     }
 
@@ -45,4 +47,10 @@ public final class Continent {
         return getAddCountry().equals(continent.getAddCountry());
     }
 
+    @Override
+    public int hashCode() {
+        return getAddCountry().hashCode();
+    }
 }
+
+

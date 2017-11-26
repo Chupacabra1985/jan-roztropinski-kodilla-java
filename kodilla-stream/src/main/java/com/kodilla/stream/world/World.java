@@ -4,18 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class World {
-    private final Set<Continent> setContinent = new HashSet<>();
     private final String continent;
+    private final Set<World> setWorld = new HashSet<>();
 
     public World(String continent) {
         this.continent = continent;
     }
 
-    public void addContinent(Continent continent){
-        setContinent.add(continent);
+    public void addContinent(World world){
+        setWorld.add(world);
     }
-    public boolean removeSetContinent(){
-        return setContinent.remove(continent);
+    public boolean removeSetWorld(){
+        return setWorld.remove(world);
     }
 
     public Set<Continent> getSetContinent(){
