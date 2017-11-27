@@ -9,13 +9,8 @@ public final class Country {
         this.quamtity = quantity;
     }
 
-    BigDecimal getPeopleQuantity(BigDecimal quamtity){
+    BigDecimal getPeopleQuantity(){
         return quamtity;
     }
-
-    public BigDecimal getCountry() {
-        return country;
-    }
-
 
 }

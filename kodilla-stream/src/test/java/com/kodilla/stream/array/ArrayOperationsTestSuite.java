@@ -15,10 +15,13 @@ public class ArrayOperationsTestSuite{
 
 
         //When
-        double average = ArrayOperations.getAverege(numbers);
 
-        IntStream.rangeClosed(numbers[0],numbers[19])
+        IntStream.rangeClosed(numbers[0],numbers[19]).map(n->numbers[n])
                 .forEach(System.out::println);
+
+        double average =IntStream.rangeClosed(numbers[0],numbers[19])
+                .average()
+                .getAsDouble();
 
 
         //Then
