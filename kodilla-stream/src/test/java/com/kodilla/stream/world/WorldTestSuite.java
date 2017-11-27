@@ -12,22 +12,21 @@ public class WorldTestSuite {
         //Given
         World world = new World();
         Continent europe = new Continent();
-        europe.addCountry(new Country(new BigDecimal("100")));
-        europe.addCountry(new Country(new BigDecimal("200")));
+        europe.addCountry(new Country(new BigDecimal("1000000")));
+        europe.addCountry(new Country(new BigDecimal("2000000")));
+        europe.addCountry(new Country(new BigDecimal("3000000")));
         world.addContinent(europe);
         Continent asia = new Continent();
-        asia.addCountry(new Country(new BigDecimal("10")));
-        asia.addCountry(new Country(new BigDecimal("20")));
+        asia.addCountry(new Country(new BigDecimal("150000000")));
+        asia.addCountry(new Country(new BigDecimal("200000000")));
+        asia.addCountry(new Country(new BigDecimal("500000000")));
         world.addContinent(asia);
 
         //When
         BigDecimal result = world.getPeopleQuantity();
 
         //Then
-        Assert.assertEquals(new BigDecimal("330"), result);
-
-
-
+        Assert.assertEquals(new BigDecimal("856000000"), result);
 
     }
 }
