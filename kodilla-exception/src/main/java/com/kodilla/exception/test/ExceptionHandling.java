@@ -10,7 +10,7 @@ public class ExceptionHandling{
                     String result = secondChallenge.probablyIWillThrowException(1.5, 2.0);
                     System.out.println(result);
                 }catch (IOException e){
-                    throw new Exception();
+                    System.out.println("User transfer incorrect data");;
                 }finally {
                     System.out.println("Finally");
                 }
