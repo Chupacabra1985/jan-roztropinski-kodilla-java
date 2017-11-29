@@ -32,6 +32,6 @@ public final class MovieStore {
     }
 
     public static void main(String[] args){
-       String theResult = MovieStore.getMovies().streem()
+       String theResult = MovieStore.getMovies().stream()
     }
 }
