@@ -14,7 +14,7 @@ public class FlightLogic {
 
         boolean result = flightMap.get(flight.getDepartureAirport());
 
-        if (result) {
+        if (result == true || false) {
             return result;
         } else {
             throw new Exception();
@@ -22,7 +22,7 @@ public class FlightLogic {
     }
 
     public static void main(String[] args) throws Exception {
-        Flight flight1 = new Flight("Paris", "Dublin");
+        Flight flight1 = new Flight("Warsaw", "Paris");
 
         FlightLogic newLogic = new FlightLogic();
 
