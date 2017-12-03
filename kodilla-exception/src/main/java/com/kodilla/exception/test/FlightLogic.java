@@ -12,8 +12,10 @@ public class FlightLogic {
         flightMap.put("Berlin", true);
         flightMap.put("Prague", false);
 
-        if (flightMap.get(flight.getDepartureAirport())) {
-            return flightMap.get(flight.getDepartureAirport());
+        boolean result = flightMap.get(flight.getDepartureAirport());
+
+        if (result) {
+            return result;
         } else {
             throw new Exception();
         }
