@@ -5,6 +5,7 @@ public class Aplication {
         UserOrderDataRetriever userOrderDataRetriever = new UserOrderDataRetriever();
         UserOrderData userOrderData = userOrderDataRetriever.retrieve();
 
+
         ProductOrderService productOrderService = new ProductOrderService();
         productOrderService.process(userOrderData);
 

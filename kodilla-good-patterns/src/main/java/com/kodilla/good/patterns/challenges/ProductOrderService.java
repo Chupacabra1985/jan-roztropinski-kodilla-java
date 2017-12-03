@@ -4,21 +4,20 @@ public class ProductOrderService {
     private BuyService buyService;
     private SendService sendService;
     private BuyerInformationService buyerInformationService;
-    private BuyUser buyUser;
 
 
-    public ProductOrderService(BuyService buyService, SendService sendService, BuyerInformationService buyerInformationService,BuyUser buyUser) {
+
+    public ProductOrderService(BuyService buyService, SendService sendService, BuyerInformationService buyerInformationService) {
         this.buyService = buyService;
         this.sendService = sendService;
         this.buyerInformationService = buyerInformationService;
-        this.buyUser = buyUser;
     }
 
     public SellDto process (final UserOrderData userOrderData){
-        boolean isSold = buyService.Buy(userOrderData.getUser(), buyUser.getQuantity());
+        boolean isSold = userOrderData.getQuantity()>0;
         if(isSold){
-            sendService.SendToBuyer(userOrderData.getUser());
-            buyerInformationService.Email();
+            sendService.sendToBuyer(userOrderData.getUser());
+            buyerInformationService.email();
             return new SellDto(userOrderData.getUser(), true);
         }else{
             return new SellDto(userOrderData.getUser(),false);

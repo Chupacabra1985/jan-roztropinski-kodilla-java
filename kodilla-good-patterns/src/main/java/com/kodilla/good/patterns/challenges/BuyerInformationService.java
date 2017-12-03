@@ -2,6 +2,6 @@ package com.kodilla.good.patterns.challenges;
 
 public interface BuyerInformationService {
 
-    void Email();
+    void email();
 
 }

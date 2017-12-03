@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges;
 
 public class Send implements SendService {
 
-    public boolean SendToBuyer(User user){
+    public boolean sendToBuyer(User user){
         return true;
     }
 }

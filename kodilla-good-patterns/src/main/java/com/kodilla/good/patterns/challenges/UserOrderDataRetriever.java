@@ -6,8 +6,9 @@ public class UserOrderDataRetriever {
         User user = new User("John", "Kowalski");
         String town = "Warsaw";
         String address = "Narutowicza 8/9";
+        int quantity = 5;
 
-        return new UserOrderData(user, town, address);
+        return new UserOrderData(user, town, address, quantity);
     }
 
 }
