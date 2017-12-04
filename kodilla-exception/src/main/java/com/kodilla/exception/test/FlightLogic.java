@@ -12,9 +12,10 @@ public class FlightLogic {
         flightMap.put("Berlin", true);
         flightMap.put("Prague", false);
 
+        Boolean var = false;
         boolean result = flightMap.get(flight.getDepartureAirport());
 
-        if (result == true || false) {
+        if (result=(var!=null)) {
             return result;
         } else {
             throw new Exception();
@@ -22,7 +23,7 @@ public class FlightLogic {
     }
 
     public static void main(String[] args) throws Exception {
-        Flight flight1 = new Flight("Warsaw", "Paris");
+        Flight flight1 = new Flight("Dublin", "Paris");
 
         FlightLogic newLogic = new FlightLogic();
 
