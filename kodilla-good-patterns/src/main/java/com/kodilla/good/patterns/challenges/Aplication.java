@@ -5,8 +5,11 @@ public class Aplication {
         UserOrderDataRetriever userOrderDataRetriever = new UserOrderDataRetriever();
         UserOrderData userOrderData = userOrderDataRetriever.retrieve();
 
+        SendService sendService = new Send();
+        BuyService buyService = new BuyCorrect();
+        BuyerInformationService buyerInformationService = new Email();
 
-        ProductOrderService productOrderService = new ProductOrderService();
+        ProductOrderService productOrderService = new ProductOrderService(buyService, sendService, buyerInformationService);
         productOrderService.process(userOrderData);
 
     }

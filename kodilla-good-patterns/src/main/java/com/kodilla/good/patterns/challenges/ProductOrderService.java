@@ -14,7 +14,7 @@ public class ProductOrderService {
     }
 
     public SellDto process (final UserOrderData userOrderData){
-        boolean isSold = userOrderData.getQuantity()>0;
+        boolean isSold = buyService.correctOrder(userOrderData.getUser(), userOrderData.getQuantity());
         if(isSold){
             sendService.sendToBuyer(userOrderData.getUser());
             buyerInformationService.email();
