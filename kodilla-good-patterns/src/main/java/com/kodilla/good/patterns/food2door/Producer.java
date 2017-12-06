@@ -1,17 +1,12 @@
 package com.kodilla.good.patterns.food2door;
 
-import java.util.LinkedList;
-import java.util.List;
+public interface Producer {
 
-abstract class Producer{
-    String companyName;
-    String city;
-    List<Product> productList = new LinkedList<>();
+    void process();
 
-    public Producer(String companyName, String city, List<Product> productList) {
-        this.companyName = companyName;
-        this.city = city;
-        this.productList = productList;
-    }
+    void addProduct(Product product);
+
+    boolean getOrderStatus();
+
 
 }
