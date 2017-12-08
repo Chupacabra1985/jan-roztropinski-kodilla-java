@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 abstract class AbstractProducer implements Producer {
-    String companyName;
-    String city;
-    List<Product> productList = new LinkedList<>();
+    private String companyName;
+    private String city;
+    private List<Product> productList = new LinkedList<>();
 
     public AbstractProducer(String companyName, String city, List<Product> productList) {
         this.companyName = companyName;
@@ -14,4 +14,15 @@ abstract class AbstractProducer implements Producer {
         this.productList = productList;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
 }
