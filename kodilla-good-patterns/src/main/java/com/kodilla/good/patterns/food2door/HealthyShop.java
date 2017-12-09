@@ -13,12 +13,6 @@ public class HealthyShop extends AbstractProducer {
     }
 
 
-    public void addProduct(Product product) {
-        getProductList().add(product);
-
-    }
-
-
     public boolean getOrderStatus() {
         return true;
     }

@@ -4,8 +4,6 @@ public interface Producer {
 
     void process();
 
-    void addProduct(Product product);
-
     boolean getOrderStatus();
 
 

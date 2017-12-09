@@ -12,10 +12,6 @@ public class GlutenFreeShop extends AbstractProducer {
         //producer is processing order
     }
 
-    public void addProduct(Product product) {
-        getProductList().add(product);
-
-    }
 
     public boolean getOrderStatus() {
         return false;

@@ -14,6 +14,11 @@ abstract class AbstractProducer implements Producer {
         this.productList = productList;
     }
 
+    public void addProduct(Product product) {
+        getProductList().add(product);
+
+    }
+
     public String getCompanyName() {
         return companyName;
     }
