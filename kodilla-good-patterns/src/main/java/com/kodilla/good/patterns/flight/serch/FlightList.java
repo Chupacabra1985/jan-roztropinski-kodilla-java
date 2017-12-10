@@ -14,6 +14,7 @@ public final class FlightList {
         theList.add(new Flight("Dubai", "Madrid"));
         theList.add(new Flight("Prague", "Berlin"));
 
+
         return new LinkedList<>(theList);
     }
 

@@ -20,9 +20,9 @@ public class FlightSerch {
                 .filter(f->f.departureHall==flight.getDepartureHall() && f.arrivalHall==flight.getArrivalHall())
                 .forEach(s->System.out.println("Direct flight :" +s));
 
-        List<Flight> thResultFlight = FlightList.flightList().stream()
-                .filter(f->f.departureHall==flight.getDepartureHall() || f.arrivalHall==flight.getArrivalHall())
-                .collect(Collectors.toList());
+        FlightList.flightList().stream()
+                .filter(f->f.departureHall==flight.getDepartureHall() && f.arrivalHall==flight.getArrivalHall() || f.getDepartureHall()==flight.getArrivalHall())
+                .forEach(s->System.out.println("Flight grid :" +s));
 
     }
 }
