@@ -4,50 +4,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FlightSerch implements FlightInterface {
-    String connect;
     FlightList flightList;
 
-
-    public FlightSerch(String connect) {
-        this.connect = connect;
+    public FlightSerch(FlightList flightList) {
+        this.flightList = flightList;
     }
 
-    public List<Flight> flightToArrival(Flight flight) {
+    public List<Flight> arrivalsTo(String city) {
         List<Flight> listF = flightList.getFlightList().stream()
-                .filter(f->f.arrivalHall==flight.getArrivalHall())
+                .filter(f->f.arrivalHall.equals(city))
                 .collect(Collectors.toList());
 
         return listF;
     }
 
-    public List<Flight> flightFromDeparture(Flight flight) {
+    public List<Flight> departuresFrom(String city) {
         List<Flight> listF = flightList.getFlightList().stream()
-                .filter(f->f.departureHall==flight.getDepartureHall())
+                .filter(f->f.departureHall.equals(city))
                 .collect(Collectors.toList());
         return listF;
     }
 
 
-    public List<Flight> connectingFlight(Flight flight, String connect) {
+    public List<Flight> connectingFlightFor(String city) {
         List<Flight> listF = flightList.getFlightList().stream()
-                .filter(f->f.departureHall==flight.getDepartureHall() && f.arrivalHall==connect
-                || f.departureHall==connect)
+                .filter(f->f.departureHall.equals(city) || f.arrivalHall.equals(city))
                 .collect(Collectors.toList());
         return listF;
     }
 
-
-
-
-    @Override
-    public String toString() {
-        return "FlightSerch{" +
-                "connect='" + connect + '\'' +
-                '}';
-    }
-
-    public String getConnect() {
-        return connect;
-    }
 }
-

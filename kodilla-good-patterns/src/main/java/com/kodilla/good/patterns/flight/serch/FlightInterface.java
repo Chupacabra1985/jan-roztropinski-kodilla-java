@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface FlightInterface {
 
-    public List<Flight> flightToArrival(Flight flight);
+    public List<Flight> arrivalsTo(String city);
 
-    public List<Flight> flightFromDeparture(Flight flight);
+    public List<Flight> departuresFrom (String city);
 
-    public List<Flight> connectingFlight( Flight flight, String connect);
+    public List<Flight> connectingFlightFor (String city);
 
 
 }

@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.flight.serach;
 
-
 import com.kodilla.good.patterns.flight.serch.Flight;
 import com.kodilla.good.patterns.flight.serch.FlightList;
 import com.kodilla.good.patterns.flight.serch.FlightSerch;
@@ -8,54 +7,56 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FlightTest {
 
     @Test
-    public void testToArrival(){
+    public void testToArrival() {
         //Given
-        Flight flight = new Flight("Warsaw", "Madrid");
+        FlightList flightList = new FlightList();
+        flightList.addFlight(new Flight("Warsaw", "Madrid"));
+        flightList.addFlight(new Flight("Warsaw", "Berlin"));
+        FlightSerch flightSerch = new FlightSerch(flightList);
 
 
         //When
-        List<Flight> listF = ListStub.flightList().stream()
-             .filter(f->f.getArrivalHall()==flight.getArrivalHall())
-             .collect(Collectors.toList());
+        List<Flight> result = flightSerch.arrivalsTo("Madrid");
 
 
         //Then
-        Assert.assertEquals(listF.size(), 2);
+        Assert.assertEquals(result.size(), 1);
     }
 
     @Test
     public void testFromDeparture(){
         //Given
-        Flight flight = new Flight("Warsaw", "Paris");
+        FlightList flightList = new FlightList();
+        flightList.addFlight(new Flight("Warsaw", "Madrid"));
+        flightList.addFlight(new Flight("Warsaw", "Berlin"));
+        flightList.addFlight(new Flight("Paris", "Moscow"));
+        FlightSerch flightSerch = new FlightSerch(flightList);
 
         //When
-        List<Flight>listF = ListStub.flightList().stream()
-                .filter(f->f.getDepartureHall()==flight.getDepartureHall())
-                .collect(Collectors.toList());
+        List<Flight> result = flightSerch.departuresFrom("Warsaw");
 
         //Then
-        Assert.assertEquals(listF.size(),1);
+        Assert.assertEquals(result.size(),2);
     }
 
     @Test
-    public void testConnectingFlight(){
+    public void testConnectingFlightFor(){
         //Given
-        Flight flight = new Flight("Paris", "Madrid");
-        FlightSerch flightSerch = new FlightSerch("London");
+        FlightList flightList = new FlightList();
+        flightList.addFlight(new Flight("Moscow", "Berlin"));
+        flightList.addFlight(new Flight("Paris", "Moscow"));
+        flightList.addFlight(new Flight("Warsaw", "London"));
+        FlightSerch flightSerch = new FlightSerch(flightList);
 
         //When
-        List<Flight>listF = ListStub.flightList().stream()
-                .filter(f->f.getDepartureHall()==flight.getDepartureHall() && f.getArrivalHall()==flightSerch.getConnect()
-                || f.getDepartureHall()==flightSerch.getConnect())
-                .collect(Collectors.toList());
+        List<Flight> result = flightSerch.connectingFlightFor("Moscow");
 
-        Assert.assertEquals(listF.size(), 3);
+        //Then
+        Assert.assertEquals(result.size(), 2);
     }
-
 
 }
