@@ -9,15 +9,6 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class BoardConfig {
 
-    @Autowired
-    @Qualifier("board1")
-    Board board;
-
-    @Bean(name = "board1")
-    @Scope("prototype")
-    public Board boardOne(){
-
-    }
 
 
 }
