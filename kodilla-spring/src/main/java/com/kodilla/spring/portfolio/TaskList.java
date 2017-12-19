@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskList {
-        final List<String> tasks;
-
-        public TaskList() {
-            tasks = new ArrayList<>();
-        }
+    final List<String> tasks = new ArrayList<>();
 
 
     public void addTask(String task) {
