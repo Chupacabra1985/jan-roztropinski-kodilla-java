@@ -6,6 +6,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Company.retrieveCompanyWithFirstLetters",
+        query = "FROM Company WHERE name LIKE 'Sof%'"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
