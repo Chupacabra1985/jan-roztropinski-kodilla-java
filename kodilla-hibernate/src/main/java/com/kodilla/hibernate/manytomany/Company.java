@@ -5,11 +5,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+@NamedQueries({
+        @NamedQuery(
+                name = "Company.retrieveCompanyWithFirstLetters",
+                query = "FROM Company WHERE name LIKE 'Sof%'"
+        ),
 
-@NamedQuery(
-        name = "Company.retrieveCompanyWithFirstLetters",
-        query = "FROM Company WHERE name LIKE 'Sof%'"
-)
+        @NamedQuery(
+                name = "Company.retrieveCompanyWithScrapName",
+                query = "FROM Company WHERE name LIKE '%ter%'"
+        )
+})
 
 @Entity
 @Table(name = "COMPANIES")
