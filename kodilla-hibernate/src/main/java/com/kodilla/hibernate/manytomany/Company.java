@@ -13,7 +13,7 @@ import java.util.List;
 
         @NamedQuery(
                 name = "Company.retrieveCompanyWithScrapName",
-                query = "FROM Company WHERE name LIKE '%ter%'"
+                query = "FROM Company WHERE name LIKE '%:ARG%'"
         )
 })
 

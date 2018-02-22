@@ -41,7 +41,7 @@ public class FacadeTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         //Then
-        serchFacade.serchEmployee();
+        serchFacade.serchEmployee("inda");
 
     }
 
@@ -69,7 +69,7 @@ public class FacadeTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         //Then
-        serchFacade.serchComapny();
+        serchFacade.serchComapny("ata");
     }
 
 }

@@ -18,19 +18,19 @@ public class SerchFacade {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SerchFacade.class);
 
-    public void serchComapny(){
+    public void serchComapny(String arg){
         LOGGER.info("Seraching... please wait.");
-        if(companyDao.retrieveCompanyWithScrapName().size()>0){
-            LOGGER.info("Result is: " + companyDao.retrieveCompanyWithScrapName().size() + " quantity.");
+        if(companyDao.retrieveCompanyWithScrapName(arg).size()>0){
+            LOGGER.info("Result is: " + companyDao.retrieveCompanyWithScrapName(arg).size() + " quantity.");
         }else {
             LOGGER.info("No reslut at list");
         }
     }
 
-    public void serchEmployee(){
+    public void serchEmployee(String arg){
         LOGGER.info("Seraching... please wait.");
-        if(employeeDao.retrieveEmployeesWithScrapName().size()>0){
-            LOGGER.info("Result is: " + employeeDao.retrieveEmployeesWithScrapName().size() + " quantity." );
+        if(employeeDao.retrieveEmployeesWithScrapName(arg).size()>0){
+            LOGGER.info("Result is: " + employeeDao.retrieveEmployeesWithScrapName(arg).size() + " quantity." );
         }else {
             LOGGER.info("No reslut at list");
         }
