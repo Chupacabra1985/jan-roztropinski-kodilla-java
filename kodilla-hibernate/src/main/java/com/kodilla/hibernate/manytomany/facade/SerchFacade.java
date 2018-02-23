@@ -1,11 +1,15 @@
 package com.kodilla.hibernate.manytomany.facade;
 
+import com.kodilla.hibernate.manytomany.Company;
+import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.dao.CompanyDao;
 import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SerchFacade {
@@ -18,21 +22,29 @@ public class SerchFacade {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SerchFacade.class);
 
-    public void serchComapny(String arg){
+    public List<Company> serchComapny(String arg){
         LOGGER.info("Seraching... please wait.");
-        if(companyDao.retrieveCompanyWithScrapName(arg).size()>0){
-            LOGGER.info("Result is: " + companyDao.retrieveCompanyWithScrapName(arg).size() + " quantity.");
+
+        List<Company> result = companyDao.retrieveCompanyWithScrapName(arg);
+        if(result.size()>0){
+            LOGGER.info("Result is: " + result.size() + " quantity.");
         }else {
             LOGGER.info("No reslut at list");
         }
+
+        return result;
     }
 
-    public void serchEmployee(String arg){
+    public List<Employee> serchEmployee(String arg){
         LOGGER.info("Seraching... please wait.");
-        if(employeeDao.retrieveEmployeesWithScrapName(arg).size()>0){
-            LOGGER.info("Result is: " + employeeDao.retrieveEmployeesWithScrapName(arg).size() + " quantity." );
+
+        List<Employee> result = employeeDao.retrieveEmployeesWithScrapName(arg);
+        if(result.size()>0){
+            LOGGER.info("Result is: " + result.size() + " quantity." );
         }else {
             LOGGER.info("No reslut at list");
         }
+
+        return result;
     }
 }
