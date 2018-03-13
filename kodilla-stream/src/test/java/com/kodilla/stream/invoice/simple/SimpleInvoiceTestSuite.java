@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class SimpleInvoiceTestSuite {
+
     @Test
     public void testGetValueToPay(){
         //Given
@@ -20,4 +21,5 @@ public class SimpleInvoiceTestSuite {
         //Then
         Assert.assertEquals(108.975, invoice.getValueToPay(),0.001);
     }
+
 }

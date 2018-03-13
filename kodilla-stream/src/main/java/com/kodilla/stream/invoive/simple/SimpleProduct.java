@@ -9,7 +9,7 @@ public final class SimpleProduct {
         this.productPrice = productPrice;
     }
 
-    public String getProductName() {
+    public String getProductName(String s) {
         return productName;
     }
 
@@ -24,11 +24,11 @@ public final class SimpleProduct {
 
         SimpleProduct that = (SimpleProduct) o;
 
-        return getProductName().equals(that.getProductName());
+        return getProductName("Product 2").equals(that.getProductName("Product 2"));
     }
 
     @Override
     public int hashCode() {
-        return getProductName().hashCode();
+        return getProductName("Product 2").hashCode();
     }
 }
