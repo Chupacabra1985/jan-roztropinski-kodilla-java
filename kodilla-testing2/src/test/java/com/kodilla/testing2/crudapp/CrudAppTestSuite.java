@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
+import java.util.stream.Collectors;
 
 
 import static junit.framework.TestCase.assertTrue;
@@ -97,6 +98,7 @@ public class CrudAppTestSuite {
 
     public boolean deleteTask(String taskName) throws InterruptedException{
         final String SERVICE_URL = "https://chupacabra1985.github.io/";
+        boolean result = false;
         WebDriver driverService = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
         driverService.get(SERVICE_URL);
 
@@ -105,10 +107,22 @@ public class CrudAppTestSuite {
        driverService.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
                 .filter(anyForm->anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText().equals(taskName))
                 .forEach(theForm->{
-                    WebElement buttonDeleteCard = theForm.findElement(By.xpath(".//button[contains(@class, \"task-delete\")]"));
+                    WebElement buttonDeleteCard = theForm.findElement(By.xpath(".//button[contains(text(), \"Delete\")]"));
                     buttonDeleteCard.click();
                 });
-       return true;
+
+       driverService.navigate().refresh();
+
+       int size = driverService.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+               .filter(anyForm->anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText().equals(taskName))
+               .collect(Collectors.toList()).size();
+       driverService.close();
+
+       if(size==0){
+           result = true;
+       }else {result = false;}
+
+       return result;
     }
 
 
