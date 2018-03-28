@@ -12,7 +12,7 @@ public class RpsRunner {
         int userScore = 0;
         int rounds = 0;
 
-        boolean startGame = false;
+        boolean isRunning = false;
         boolean newGame = false;
 
         System.out.println("Hello my Friend!");
@@ -24,68 +24,89 @@ public class RpsRunner {
         if (nameTrue == true) {
             System.out.println("Do you want to start a new game? (Y/N)");
             String play = keyboard.nextLine();
-            startGame = play.equalsIgnoreCase("Y");
+            isRunning = play.equalsIgnoreCase("Y");
         }
-        if (startGame == true) {
+        if (isRunning == true) {
             System.out.println("How many rounds: ");
-            rounds = keyboard.nextInt();
-            newGame = rounds > 0;
+            rounds = Integer.parseInt(keyboard.nextLine());
+            isRunning = rounds > 0;
         }
-        if (newGame == true) {
 
-            while (startGame && comScore < rounds && userScore < rounds) {
-                System.out.println("Enter 1 for ROCK, 2 for PAPER, 3 for SCISSORS, x for END GAME, n NEW GAME");
-                String user = keyboard.nextLine();
-                if (user.equalsIgnoreCase("X")) {
-                    System.out.println("Do you really want to end the game? (Y/N)");
-                    String close = keyboard.nextLine();
-                    if (close.equalsIgnoreCase("Y")) {
-                        System.out.println("Goodbye!");
-                        System.exit(0);
-                    } else {
-                        continue;
-                    }
-                } else if (user.equalsIgnoreCase("N")) {
-                    System.out.println("Do you really want to end current game? (Y/N)");
-                    String reloadGame = keyboard.nextLine();
-                    if (reloadGame.equalsIgnoreCase("Y")) {
-                        userScore = 0;
-                        comScore = 0;
-                        continue;
-                    } else {
-                        continue;
-                    }
-                } else if (user.equals("1") || user.equals("2") || user.equals("3")) {
-                    int comp = rand.nextInt(2) + 1;
-                    System.out.println("I draw: " + comp);
-                    if ((user.equals("1") && comp == 3) || (user.equals("2") && comp == 1) || (user.equals("3") && comp == 2)) {
-                        System.out.println("You win!");
-                        userScore++;
-                    } else if ((user.equals("1") && comp == 2) || (user.equals("2") && comp == 3) || (user.equals("3") && comp == 1)) {
-                        System.out.println("I win!");
-                        comScore++;
-                    }
 
-                    System.out.println("SCORE  you: " + userScore + " my: " + comScore);
+        while (isRunning) {
+            System.out.println("Enter 1 for ROCK, 2 for PAPER, 3 for SCISSORS, x for END GAME, n NEW GAME");
+            String user = keyboard.nextLine();
+            if (user.equalsIgnoreCase("X")) {
+                System.out.println("Do you really want to end the game? (Y/N)");
+                String close = keyboard.nextLine();
+                if (close.equalsIgnoreCase("Y")) {
+                    System.out.println("Goodbye!");
+                    System.exit(0);
+                } else {
+                    continue;
+                }
+            } else if (user.equalsIgnoreCase("N")) {
+                System.out.println("Do you really want to end current game? (Y/N)");
+                String reloadGame = keyboard.nextLine();
+                if (reloadGame.equalsIgnoreCase("Y")) {
+                    userScore = 0;
+                    comScore = 0;
+                    continue;
+                } else {
+                    continue;
+                }
+            } else if (isEquals(user)) {
+                int comp = rand.nextInt(2) + 1;
+                System.out.println("I draw: " + comp);
+                if (userWin(user, comp)) {
+                    System.out.println("You win!");
+                    userScore++;
+                } else if (compWin(user, comp)) {
+                    System.out.println("I win!");
+                    comScore++;
+                }
+
+                System.out.println("SCORE  you: " + userScore + " my: " + comScore);
+            }
+
+            if (isGameFinised(comScore, userScore, rounds)) {
+
+                if (comScore > userScore) {
+                    System.out.println("I bet you!");
+                } else {
+                    System.out.println("You beat me!");
+                }
+
+                System.out.println("Do you want to play again? (Y/N)");
+                String play = keyboard.nextLine();
+                if (play.equalsIgnoreCase("y")) {
+                    userScore = 0;
+                    comScore = 0;
+
+                } else {
+                    System.out.println("See you next time!");
+                    isRunning = false;
                 }
             }
-
-            if (comScore > userScore) {
-                System.out.println("I bet you!");
-            } else {
-                System.out.println("You beat me!");
-            }
-
-            System.out.println("Do you want to play again? (Y/N)");
-            String play = keyboard.nextLine();
-            if (play.equalsIgnoreCase("y")) {
-                System.out.println("Please press play");
-
-            } else {
-                System.out.println("See you next time!");
-            }
         }
 
+
+    }
+
+    private static boolean compWin(String user, int comp) {
+        return (user.equals("1") && comp == 2) || (user.equals("2") && comp == 3) || (user.equals("3") && comp == 1);
+    }
+
+    private static boolean userWin(String user, int comp) {
+        return (user.equals("1") && comp == 3) || (user.equals("2") && comp == 1) || (user.equals("3") && comp == 2);
+    }
+
+    private static boolean isEquals(String user) {
+        return user.equals("1") || user.equals("2") || user.equals("3");
+    }
+
+    private static boolean isGameFinised(int comScore, int userScore, int rounds) {
+        return comScore >= rounds || userScore >= rounds;
     }
 }
 
